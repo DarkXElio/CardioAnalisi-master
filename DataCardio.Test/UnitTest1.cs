@@ -262,6 +262,50 @@ namespace DataCardio.Test
 
         }
 
+        [TestMethod]
+
+
+
+        //      sesso  FCArdiaca , Pesso , ETA , Teampo , Atessa
+        [DataRow("F" , "65" ,"56" ,"23" ,"60", "47,4923518164436")]
+        [DataRow("M", "65", "56", "23", "60", "24,3025812619504")]
+        [DataRow("A", "65", "56", "23", "60", "24,3025812619504")]
+        [DataRow("F", "65", "a", "50", "60", "24,3025812619504")]
+        public void calcoriebruciato(string sesso, string fcardiaca , string pesso , string eta , string tempo,string atessa)
+        {
+
+            double return_res = 0;
+            string errore_msg = " ";
+            string msg = " ";
+            try { 
+            return_res = EquazioniLibrary.DataCardio.CalorieBruciato(sesso , Convert.ToDouble(fcardiaca), Convert.ToDouble(pesso), Convert.ToDouble(eta), Convert.ToDouble(tempo),ref msg);
+            errore_msg = "Errore il sesso non non e correto ";
+                if (msg == " ")
+                {
+                    Assert.AreEqual(Convert.ToString(return_res), atessa);
+                }
+                else
+                {
+                    Assert.AreEqual(errore_msg, msg);
+                }
+
+            }
+            catch
+            {
+                errore_msg = "Errore devi inserrire un numero e no un lattera";
+                msg = "Errore devi inserrire un numero e no un lattera";
+                Assert.AreEqual(errore_msg, msg);
+                
+               
+
+            }
+            
+
+           
+
+
+
+        }
 
     }
 }
