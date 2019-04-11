@@ -66,6 +66,7 @@ namespace EquazioniLibrary
             if (cardiacanumero > 100) msg = " Tachicardia ";
 
             return msg;
+
         }
 
 
